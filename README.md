@@ -1,3 +1,10 @@
+FIRST, Clone and run npm install in this directory.
+
+Then run npm start.
+
+Then See Magik. 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
