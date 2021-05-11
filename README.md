@@ -1,8 +1,6 @@
-FIRST, Clone and run npm install in this directory.
-
-Then run npm start.
-
-Then See Magik. 
+1. Clone and run npm install in this directory.
+2. Then I tell next.
+3. Will not run now. Need to have API keys. Call me when processding.
 
 
 # Getting Started with Create React App
