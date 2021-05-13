@@ -25,7 +25,7 @@ const Gauge = (props) => {
     return (
         <div className="gauge-div">
             <div className="gauge-name">{props.name}</div>
-            <div ref={gaugeEl} className="gauge-container" />;
+            <div ref={gaugeEl} className="gauge-container" />
         </div>
     )
 };
