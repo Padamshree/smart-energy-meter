@@ -1,30 +1,59 @@
 import React, { useEffect, useState } from 'react';
 import Gauge from './components/Gauge';
-import UnitMeter from './components/UnitMeter';
+import HourChart from './components/HourChart';
+import DayChart from './components/DayChart';
+
+import gaugeOptions from './utils/gaugeDefaults';
 import firebase from './firebase';
+import './styles/app.css';
 
 function App() {
     const [user, setUser] = useState(0);
 
     useEffect(() => {
-        async function call_DB () {
-            const readingRef = await firebase.database().ref("Readings");
-            readingRef.on("value", (snapshot) => {
-                const valArr = snapshot.val();
-                const customer = valArr["Paddy"];
-                setUser(customer);
-            });
-        }
-        call_DB();
+			async function call_DB () {
+				const readingRef = await firebase.database().ref("Readings");
+				readingRef.on("value", (snapshot) => {
+					const valArr = snapshot.val();
+					const customer = valArr[Object.keys(valArr)[0]];
+					setUser(customer);
+				});
+			}
+			call_DB();
     }, []);
 
     return (
-        <div>
-            <Gauge name={"Power"} value ={user.Power} />
-            <Gauge name={"Current"} value={user.Current} />
-            <Gauge name={"Voltage"} value={user.Voltage} />
-            <UnitMeter name={"Units Consumed"} value={user.Units} />
-        </div>
+			<div id="Dashboard">
+				<div className="wrapper">
+					<Gauge
+						name={"Voltage"} 
+						value={user.voltage}
+						options={gaugeOptions.voltage}
+					/>
+					<Gauge
+						name={"Current"} 
+						value={user.current}
+						options={gaugeOptions.current}
+					/>
+					<Gauge
+						name={"Power"} 
+						value={user.power}
+						options={gaugeOptions.power}
+					/>
+					<Gauge
+						name={"Units"} 
+						value={user.units}
+						options={gaugeOptions.units}
+					/>
+				</div>
+				<div className="chart">
+					<HourChart />
+				</div>
+				<div className="chart">
+					<DayChart />
+				</div>
+
+			</div>
     );
 }
 
