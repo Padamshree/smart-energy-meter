@@ -1,6 +1,5 @@
 import firebase from "firebase";
 
-console.log(process.env.REACT_APP_WOWSY);
 const firebaseConfig = {
   apiKey: "AIzaSyC4PAIo12jdcpl2yJ7F6Z89N-VIyAfzvWY",
   authDomain: "smart-energy-meter-iot-9e3d8.firebaseapp.com",

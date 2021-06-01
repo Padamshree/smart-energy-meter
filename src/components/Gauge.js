@@ -8,7 +8,6 @@ const Gauge = (props) => {
     useEffect(() => {
         if (!gaugeRef.current) {
             const gaugeOptions = props.options;
-            console.log(props.options);
             const options = {...gaugeOptions.options, ...props};
             gaugeRef.current = SvgGauge(gaugeEl.current, options);
             gaugeRef.current.setValue(options.initialValue);            
