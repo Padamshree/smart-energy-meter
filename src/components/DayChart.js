@@ -2,16 +2,16 @@ import React from 'react';
 import getDateArray from '../utils/getDates';
 import { Line } from 'react-chartjs-2';
 
-const DayChart = () => {
-
+const DayChart = (props) => {
+  
     const montharray = getDateArray().reverse();
 
-    const tempData = {
+    const data = {
         labels: montharray,
         datasets: [
           {
             label: "Last 30 days' unit consumption (kWh)",
-            data: [...Array(30).keys()],
+            data: props.data,
             backgroundColor: [
               'rgba(255, 99, 132, 0.5)',
               'rgba(54, 162, 235, 0.5)',
@@ -42,7 +42,7 @@ const DayChart = () => {
 
     return (
         <Line 
-            data={tempData}
+            data={data}
             options={options}
         />
     );

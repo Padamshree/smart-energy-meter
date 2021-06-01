@@ -47,10 +47,14 @@ function App() {
 					/>
 				</div>
 				<div className="chart">
-					<HourChart />
+					<HourChart 
+						data={user.DayLog}
+					/>
 				</div>
 				<div className="chart">
-					<DayChart />
+					<DayChart 
+						data={user.MonthLog}
+					/>
 				</div>
 
 			</div>

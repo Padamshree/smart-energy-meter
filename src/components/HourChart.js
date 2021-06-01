@@ -1,8 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
-const HourChart = () => {
-
+const HourChart = (props) => {
     let d = new Date();
     let dayarray = [...Array(24).keys()];
     dayarray = [
@@ -10,12 +9,12 @@ const HourChart = () => {
         ...dayarray.slice(0, d.getHours() + 1)
     ];
 
-    const tempData = {
+    const data = {
         labels: dayarray.map(elm => elm.toString() + ':00'),
         datasets: [
           {
             label: 'hourly unit consumption (kWh)',
-            data: dayarray,
+            data: props.data,
             backgroundColor: [
               'rgba(255, 99, 132, 0.5)',
               'rgba(54, 162, 235, 0.5)',
@@ -46,7 +45,7 @@ const HourChart = () => {
 
     return (
         <Line 
-          data={tempData}
+          data={data}
           options={options} />
     );
 }
