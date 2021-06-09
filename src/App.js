@@ -11,18 +11,19 @@ function App() {
     const [user, setUser] = useState(0);
 
     useEffect(() => {
-			async function call_DB () {
-				const readingRef = await firebase.database().ref("Readings");
-				readingRef.on("value", (snapshot) => {
-					const valArr = snapshot.val();
-					const customer = valArr[Object.keys(valArr)[0]];
-					setUser(customer);
-				});
-			}
-			call_DB();
-    }, []);
+		async function call_DB () {
+			const readingRef = await firebase.database().ref("Readings");
+			readingRef.on("value", (snapshot) => {
+				const valArr = snapshot.val();
+				const customer = valArr[Object.keys(valArr)[0]];
+				setUser(customer);
+			});
+		}
+		call_DB();
+    },[]);
 
     return (
+		
 			<div id="Dashboard">
 				<div className="wrapper">
 					<Gauge
@@ -56,7 +57,6 @@ function App() {
 						data={user.MonthLog}
 					/>
 				</div>
-
 			</div>
     );
 }
